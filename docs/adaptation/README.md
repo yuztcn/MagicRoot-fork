@@ -20,7 +20,8 @@
 7. 07-root-targets-and-widevine.md
    gtxdrivers/游戏管家/安全公共服务/Widevine 结论。
 
-已验证二进制位于 binary-sources/98260-6.12/verified/；复现说明见 docs/ADAPT-ROOTD-STP-REPRO.md。
+已验证二进制曾位于 binary-sources/98260-6.12/verified/，审计副本已从公开树移除；
+SHA-256 保留在 docs/adaptation/VERIFIED-BINARIES-SHA256SUMS.txt，复现说明见 docs/ADAPT-ROOTD-STP-REPRO.md。
 所有操作均未修改 /system 或 /vendor 分区。
 8. 09-66118-STATIC-ADAPT.md / 09a/09b
    Honor AAK 6.6.118 boot.img 静态适配：符号/常量/profile/编译产物；AVB 私钥不可得，禁止改刷 boot。

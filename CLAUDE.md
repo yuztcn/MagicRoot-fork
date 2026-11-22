@@ -22,7 +22,7 @@ main/app/assets/           当前实际打包的设备端脚本和二进制资�
 main/app/                  build.ps1、旧版资源和 libs
 ```
 
-**不要修改** `main/app/src/` 下的旧版控制器；它没有 Gradle 模块，**不参与构建**。实际控制器是：
+旧版 `main/app/src/` 与 legacy 构建目录已移除（见 §10）。实际控制器是：
 
 ```text
 main/compose-app/app/src/main/java/com/aoki/magicroot/MainActivity.java
@@ -455,7 +455,7 @@ chore: ...
 - 上次 21:00 异常重启为 faultdetect `page_request` PANIC，时间线无
   `SYSTEM_RESTART`，与 timer-UAF 收尸同类。
 - 当前 rootd PPID=1 父进程保留时，不要 kill；重启自然清理。
-- `main/app/src/` 是旧版，不要修改。
+- 旧版 `main/app/src/`、legacy 构建脚本与审计预编译件已移除；不要重新引入。
 - `main/app/assets/98260-6157/run6157.sh` 已删除；6.1 使用
   `98260/run6157_full.sh`。
 - 自适应生成的 `syms.txt` 必须转换为 `name 0xADDR`，否则 `ko_patch` 不能解析。

@@ -113,8 +113,8 @@ g264 / gaaa:  ABS=226, live stubs=221
 
 `rebase_cga_module.py` 的默认值仍锁定旧 base；只有显式设置
 `CGA_BASE_SHA256`、`CGA_EXPECTED_ABS`、`CGA_EXPECTED_STUBS` 才接受恢复版。
-旧 base 保存在 `binary-sources/61157-g264/legacy-cga/`，只用于历史验证，
-不进入 APK。
+旧 base 曾保存在 `binary-sources/61157-g264/legacy-cga/`；审计副本已从公开树
+移除（SHA-256 `6381ad16…`），不进入 APK。
 
 ## 5. 可复现构建
 

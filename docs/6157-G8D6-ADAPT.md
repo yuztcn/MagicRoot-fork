@@ -78,12 +78,16 @@ python3 -I binary-sources/61157-g264/rebase_success_payload.py apply \
 ## CGA 模块与符号表
 
 ```sh
+# CGA_LEGACY_BASE=<本地 legacy-cga/ksm-g264-base.ko 审计副本>
 python3 -I binary-sources/61157-g264/rebase_cga_module.py apply \
-  --base binary-sources/61157-g264/legacy-cga/ksm-g264-base.ko \
+  --base "$CGA_LEGACY_BASE" \
   --profiles binary-sources/61157-g264/cga-profiles.json \
   --output-root main/app/assets/g264 --only g8d6
 python3 -I tools/gen_6157_syms_from_cga.py
 ```
+
+审计副本 `legacy-cga/ksm-g264-base.ko` 已从公开树移除（SHA-256
+`6381ad16…`）；本地保留该文件时原命令可直接使用。
 
 ```text
 g264/ksm-g8d6-base.ko   e9c20b2904742f26f3242da3983fcdaaf13fdea4503c3f38aac50e2767250321

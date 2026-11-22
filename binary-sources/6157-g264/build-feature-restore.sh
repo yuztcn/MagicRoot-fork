@@ -84,8 +84,14 @@ compile "$OUT/KernelSU/kernel/hook/arm64/syscall_hook.c" "$OUT/obj/hook_arm64_sy
 
 "$LD_LLD" -r -z max-page-size=4096 -o "$OUT/ksm-raw.ko" "$OUT/obj/"*.o
 python3 -I "$ROOT/binary-sources/6157-g264/pipeline/slim2.py" "$OUT/ksm-raw.ko" "$OUT/ksm-s1.ko"
+LEGACY_CGA_BASE="${CGA_LEGACY_BASE:-$ROOT/binary-sources/61157-g264/legacy-cga/ksm-g264-base.ko}"
+[ -f "$LEGACY_CGA_BASE" ] || {
+    echo "missing audit base: $LEGACY_CGA_BASE" >&2
+    echo "the 225/220 base is no longer stored in the public tree; set CGA_LEGACY_BASE to a local copy" >&2
+    exit 1
+}
 python3 -I "$ROOT/binary-sources/6157-g264/pipeline/extract_abs_symbols.py" \
-    "$ROOT/binary-sources/61157-g264/legacy-cga/ksm-g264-base.ko" \
+    "$LEGACY_CGA_BASE" \
     "$OUT/g264-restore-syms.txt" "$ROOT/main/app/assets/ksu6157-g264/ksu-syms.txt"
 CGA_ELF_SYMS="$OUT/g264-restore-syms.txt" python3 -I \
     "$ROOT/binary-sources/6157-g264/pipeline/offrelink6.py" "$OUT/ksm-s1.ko" "$OUT/ksm-r0.ko" 0

@@ -65,7 +65,9 @@ echo "add_open_redirect /system/bin/su /dev/null 0" > /proc/susfs_open_redirect
 
 ## 资产与风险
 
-- 当前 APK 使用 6.12 SuSFS LKM guard；6.6 资产在 `binary-sources/66118/susfs/`。
+- 当前 APK 使用 6.12 SuSFS LKM guard；6.6 审计副本曾位于
+  `binary-sources/66118/susfs/`，已从公开树移除；运行资产仍是
+  `main/app/assets/susfs_insmod`。
 - SuSFS LKM 为 GPL-2.0 第三方 LKM，发布保留来源/许可。
 - `open_redirect` 对 hisecd check-su 的覆盖仍需实机验证。
 - 默认关闭，不会自动加载。

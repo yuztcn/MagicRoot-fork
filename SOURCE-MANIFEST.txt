@@ -277,8 +277,9 @@ dispatcher.  g19a and all profiles without complete new symbol maps are unchange
 
 Both are 422384 B with 226 absolute symbols and 221 live stubs.  The checked-in
 build-feature-restore.sh reproduced identical outputs in a fresh directory.
-The original 225/220 base is retained only under binary-sources/61157-g264/
-legacy-cga for old-profile verification and is not an APK asset.  No device-side
+The original 225/220 base was an audit-only copy under binary-sources/61157-g264/
+legacy-cga (SHA-256 6381ad16a904af8d7d2a702e04994ed22c3fd01c6e00229ec584634034a56c09);
+it has been removed from the public tree and is not an APK asset.  No device-side
 insmod or feature validation has been performed.
 
 Late-load init_cred integration (2026-11-11)

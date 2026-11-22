@@ -899,7 +899,9 @@ g264/ksm-gaaa-base.ko               64ebb525f3f98c73a0cc648f27552b0e5792ee18aaf8
 ```
 
 2026-11-11 恢复版 CGA 映射 226 个绝对符号、221 个活跳板并更新精确 vermagic；
-旧 225/220 输入保留在 `legacy-cga/` 供历史验证。`pc98260-su`
+旧 225/220 输入曾保存在 `legacy-cga/`；该审计副本已从公开树移除
+（SHA-256 `6381ad16a904af8d7d2a702e04994ed22c3fd01c6e00229ec584634034a56c09`），
+运行资产不受影响。`pc98260-su`
 与其他 6.1 CGA profile 相同，由 `tools/asset_dedup_map.json` 去重。完整证据、
 复现命令和未验证边界见 `docs/61157-GAAA-ADAPT.md`。本次没有引入
 43499/Pad3 路线，也没有对应真机 root/KSU 验证。
@@ -1636,8 +1638,9 @@ b44cc79de9196c65a0f2ffe1a6e5b23dff7713c68f8752c3fe861c627d78399a  g264/ksm-g264-
 `6157-integrity.tsv` 已更新。`binary-sources/6157-g264/build-feature-restore.sh`
 在全新输出目录复现了相同两份 hash。
 
-旧 225/220 base 移至 `binary-sources/61157-g264/legacy-cga/`，只用于旧 profile
-的来源验证，不打包进 APK。`g8a496/g2e1f` 缺少新增 tracepoint 符号的地址，
+旧 225/220 base 曾保存在 `binary-sources/61157-g264/legacy-cga/`；该审计副本
+已从公开树移除（SHA-256 `6381ad16a904af8d7d2a702e04994ed22c3fd01c6e00229ec584634034a56c09`），
+不打包进 APK。`g8a496/g2e1f` 缺少新增 tracepoint 符号的地址，
 其余旧 CGA profile 也未重链，均保持旧资产；`g19a` 的完整上游 MagicPad 模块
 未被替换。当前结果只有主机侧构建和静态验证，未真机加载。
 

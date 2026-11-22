@@ -105,7 +105,6 @@ REQUIRED = [
     'binary-sources/61157-g264/rebase_cga_module.py',
     'binary-sources/61157-g264/cga-profiles.json',
     'binary-sources/61157-g264/cga-feature-restore.json',
-    'binary-sources/61157-g264/legacy-cga/ksm-g264-base.ko',
     'binary-sources/6157-g264/build-feature-restore.sh',
     'tools/test_cga_feature_restore.py',
     'tools/test_init_cred_patch.py',
