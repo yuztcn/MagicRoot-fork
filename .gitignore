@@ -1,0 +1,19 @@
+﻿# Build outputs and release archives are not source history
+**/build/
+**/.gradle/
+.gradle-home/
+.idea/
+**/local.properties
+release-*/
+*.apk
+*.idsig
+
+# Python bytecode / cache dirs are generated, not source
+__pycache__/
+*.py[cod]
+
+# Workspace progress notes stay local to the working tree
+进度.md
+
+# 本机构建产物（APK/中间包）
+build-test/

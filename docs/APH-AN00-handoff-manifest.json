@@ -1,0 +1,37 @@
+{
+  "adapter": "MagicRoot-APH-AN00-kernel-adapter",
+  "version": "1.0.0",
+  "sourceTreeModified": false,
+  "integrationApplied": false,
+  "target": "Future MagicRoot source supplied by the user",
+  "profiles": {
+    "aph112": {
+      "kernel_release": "6.12.58-android16-6-g459a4285ccf8-abogki532718632-4k",
+      "image_sha256": "411d87a6841685733804207d13000683f85b10c9bda1ec0feed0a63480e1f20a",
+      "action": "new",
+      "assets": "main/app/assets/98260-aph112/",
+      "kaslr": "main/app/assets/kaslr_slide_aph112",
+      "syms": "main/app/assets/syms_aph112.txt",
+      "target_header": "sources/98260-6.12/pc98260_target_aph112.h"
+    },
+    "aph136": {
+      "kernel_release": "6.12.58-android16-6-g3a7ac1674240-abogki541502914-4k",
+      "image_sha256": "2b158518f3436f2f7efb31c012137d14d06e301b7570ab187a9df1be856fe8ab",
+      "action": "reuse-61258",
+      "evidence": "Identical target constants, KASLR source and all 226 LKM symbol addresses"
+    }
+  },
+  "validation": {
+    "scope": "static firmware derivation, compilation and package audit only",
+    "device_root_verified": false,
+    "aph112_exploit_sha256": "23c2fde655197602fbac23df92ddbdae95e56ec71c407f683345a1cc7fb7b0be",
+    "pc98260_su_sha256": "696240ec583616d3677e693d1e5d3783b7f590b682ace8d7ca830bc757516ca5",
+    "kaslr_aph112_sha256": "7196a6d77421bd5e045505622391054609b47015c5ce44a46da7c540745d81a5",
+    "lkm_symbol_count": 226,
+    "lkm_symbol_missing": 0
+  },
+  "tools": {
+    "integrate": "tools/integrate_aph.py --source <future-source> [--apply]",
+    "verify": "tools/verify_aph_adapter.py --package <adapter-directory>"
+  }
+}

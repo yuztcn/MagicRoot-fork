@@ -1,0 +1,87 @@
+{
+  "files": {
+    "bundled_ko.md5": {
+      "sha256": "9c500be1100580729f3c8f9d3296eef1fc712f786714d0af6f98b0ea02e80cbd",
+      "size": 761
+    },
+    "kernelsu-os9-selx11.ko": {
+      "sha256": "b39d013024960a6181441f0d0163a088f98fc1ad52700b7ee356a6eb6e6d9ea3",
+      "size": 5533360
+    },
+    "kernelsu_ksu331.ko": {
+      "sha256": "819a197d240008dadb84b9eaf09b8e54b7132a191b6e0d1b784c03936cf8e856",
+      "size": 6068248
+    },
+    "kernelsu_success.ko": {
+      "sha256": "49e0e4883b58410549befd67882d139106ab4793ef731c93862832a85bb84d96",
+      "size": 5459384
+    },
+    "ko_patch2": {
+      "sha256": "7614e129ae5232378697564efe03ddeed97852a42aad712f74b4fcc4b40b5c84",
+      "size": 9992
+    },
+    "ksu_loader.sh": {
+      "sha256": "21676c9e9d1029ef48de22aa0e39cb24a777efbccce8e5f1e85023962efe79f6",
+      "size": 220918
+    },
+    "ksu_probe.sh": {
+      "sha256": "109e6d67263b4e97ddc1fbb5a9395462a1b1fd5ce9e4faa6cd13f0cdc1f22bf3",
+      "size": 4618
+    },
+    "ksu_rules": {
+      "sha256": "fdf974f70663b771f0070a1c4f6a0b4a0156353dafa222e101d37a66b9fde66e",
+      "size": 3241
+    },
+    "ksud_resukisu": {
+      "sha256": "4ef8e84d6dc5a6694eff939a21479f10b9f76c5566096422408285e1cb7f4927",
+      "size": 5720304
+    },
+    "ksud_success": {
+      "sha256": "077797b6cd07621b4352a55bbcfb03cb86a33f0fb044aeb4706445a21215eb57",
+      "size": 4556352
+    },
+    "load_ko": {
+      "sha256": "0038797145b54944e402afef173497dfaa452b9aebc5205a8bdf48256bd0cbe6",
+      "size": 2142392
+    },
+    "magiskpolicy": {
+      "sha256": "9837db9db475eb74b6715f081768cb6a1f2fb5a2b2ac15755686062501bace27",
+      "size": 356584
+    },
+    "next_sym_addr.txt": {
+      "sha256": "09cec579c60151017febdc29803af32c15541c1bbb6f68d972309e66f567944b",
+      "size": 7544
+    },
+    "next_sym_addr_uapi5.txt": {
+      "sha256": "d077e22b457d45122ca02879aae57cce02685a32cabc66e7916dc039804497f7",
+      "size": 8725
+    },
+    "poison_trap.sh": {
+      "sha256": "7568db32015176efab3503caf03351f2c912d9a655eac55926775df50a203b96",
+      "size": 8284
+    },
+    "post_root.sh": {
+      "sha256": "f3c48e4f0561098a84f4816b63ba88309b8dacf03427bb56c47295f4a146b1d0",
+      "size": 2157
+    },
+    "su_forward": {
+      "sha256": "ad4f895fbcc66d986204e2ee8783f635daf23a7ea5fe6f8ae27651e7942c4cea",
+      "size": 9056
+    },
+    "su_optional.sh": {
+      "sha256": "1381aa9a24135e7d37d259e9752b9ba9356252374cd999d3f68b0d2fd1ede1ae",
+      "size": 6732
+    },
+    "su_overlay_helper": {
+      "sha256": "6a4b71c25220d24047250c36f05f8d5f0bf6ed5a5504c21525d5866f3dab8c78",
+      "size": 26400
+    }
+  },
+  "format": 1,
+  "kernel": "6.1.157-android14-11-g7d3922fade43",
+  "local_modifications": {
+    "post_root.sh": "2026-11-07: retain diagnostic snapshots; remove the unused persistent FIFO eval root service"
+  },
+  "source_apk_sha256": "cce10cb3ca64c4152f9c73c9b60f6a27bd9053dd3a919a708c7eb13de831bb0d",
+  "source_archive_sha256": "6f0fd7cf03bfbc52bc3cfa0c1c964f9445a75221d62b4792210ac15d45320d21"
+}

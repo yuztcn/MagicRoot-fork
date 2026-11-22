@@ -1,0 +1,74 @@
+# ksu_rules — SELinux policy for KernelSU on CGA-W00 (MagicPad3), injected with
+#              `magiskpolicy --apply ksu_rules --live` BEFORE kernelsu.ko loads.
+#
+# This mirrors what KernelSU v3.2.5's kernel/selinux/rules.c
+# apply_kernelsu_rules() injects, because init-bootid.patch makes the module SKIP
+# that call on a late load (its rcu swap without security_load_policy() orphans
+# every running SID on this device).
+#
+# NOTE: v3.2.5's rules.c also emits five `memfd_file` rules, but this device's
+# policy has no `memfd_file` class (magiskpolicy reports "class memfd_file does
+# not exist" and ignores them), so they are deliberately omitted here.
+
+type ksu domain
+typeattribute ksu mlstrustedsubject
+typeattribute ksu netdomain
+typeattribute ksu bluetoothdomain
+permissive ksu
+
+type ksu_file file_type
+typeattribute ksu_file mlstrustedobject
+allow domain ksu_file * *
+
+allow ksu * * *
+
+allowxperm ksu * blk_file ioctl *
+allowxperm ksu * fifo_file ioctl *
+allowxperm ksu * chr_file ioctl *
+allowxperm ksu * file ioctl *
+
+allow init ksu * *
+
+allow servicemanager ksu dir { search read }
+allow servicemanager ksu file { open read }
+allow servicemanager ksu process getattr
+allow domain ksu process sigchld
+
+allow logd ksu dir search
+allow logd ksu file { read open getattr }
+
+allow domain ksu fd use
+allow domain ksu fifo_file *
+
+allow domain ksu unix_stream_socket *
+
+allow hwservicemanager ksu dir search
+allow hwservicemanager ksu file { read open }
+allow hwservicemanager ksu process getattr
+
+allow domain ksu binder *
+
+allow system_server ksu process { getpgid sigkill }
+
+# ══════════════════════════════════════════════════════════════════════════
+# ★ fix4-20261018：kernel 域单独放宽容（BVL rootshell 的 init_cred 通道）
+#
+#   os9-selx11 的 ksu_bvl_rootshell 每 3 秒把 init_cred 发给
+#   「shells + granted apps」。init_cred 的 SID 是 u:r:kernel:s0，
+#   **不是** u:r:ksu:s0 —— 所以上面那些 `allow ksu * * *` / `permissive ksu`
+#   一条都不管用。
+#
+#   2026-10-18 真机（Enforcing）实测后果：
+#     · 管理器（10511，已在 allowlist）读自己的
+#       /data/data/.../files/datastore/app_preferences.preferences_pb → EACCES
+#       ⇒ java.io.IOException: Inoperable file … → 闪退
+#     · 荣耀工具箱 / 其它已授权 App 同样在 3 秒周期上 SIGABRT
+#     · root shell 连 /data/local/tmp 都进不去、toybox 也 getattr 不到：
+#         avc: denied { search }  scontext=u:r:kernel:s0 tcontext=shell_data_file
+#         avc: denied { getattr } scontext=u:r:kernel:s0 tcontext=toolbox_exec
+#     · 补 `permissive kernel` 后同一台机管理器稳定运行 60 s+，denial 消失
+#
+#   kernel 域在 AOSP 里只给内核线程用，这里被 BVL 借去做 root shell；
+#   这些进程本来就是 uid 0，单独放宽容不会扩大攻击面。
+# ══════════════════════════════════════════════════════════════════════════
+permissive kernel

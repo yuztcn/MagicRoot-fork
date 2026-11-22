@@ -1,0 +1,221 @@
+{
+  "description": "Build-time APK asset deduplication map. Duplicate entries are stripped by tools/strip_baseline.py after SHA-256 verification and transparently resolved at runtime via MainActivity.openBundledAsset / KernelLogHelper.resolveCanonicalAsset.",
+  "duplicates": {
+    "61157/g264/ko_slide_patch": {
+      "canonical": "g264/ko_slide_patch",
+      "sha256": "6ac87f0119aa992aa10ea75d8546097da1e35ecfe8fe5eae0719841203970547",
+      "size": 420032
+    },
+    "61157/g264/ksm-g264-base.ko": {
+      "canonical": "g264/ksm-g264-base.ko",
+      "sha256": "b44cc79de9196c65a0f2ffe1a6e5b23dff7713c68f8752c3fe861c627d78399a",
+      "size": 422384
+    },
+    "61157/su-g264/su_lkm": {
+      "canonical": "su-g264/su_lkm",
+      "sha256": "7e9ba63ee35849fc1e31d1b72588f601518d7f9562d5bdfca81a4c49910a3f88",
+      "size": 417984
+    },
+    "61157/su-g264/su_optional.sh": {
+      "canonical": "su-g264/su_optional.sh",
+      "sha256": "faf80f7c0b30f013c12ec94d45c797f010e240ab9f41f4d976c59292e6923583",
+      "size": 10141
+    },
+    "61157/su-g264/su_overlay_helper": {
+      "canonical": "ksu6157-m6/su_overlay_helper",
+      "sha256": "6a4b71c25220d24047250c36f05f8d5f0bf6ed5a5504c21525d5866f3dab8c78",
+      "size": 26400
+    },
+    "64560-61821/ksud": {
+      "canonical": "61157/ksud",
+      "sha256": "4f7d5fd65631915ea579ff406bd9cbe58217f2c91dac6527f5b2f28ad4508171",
+      "size": 4990848
+    },
+    "98260-61821-brm/ksu-template-61821-bakasu.ko": {
+      "canonical": "ksu-template-61821-bakasu.ko",
+      "sha256": "d28d3ecf800ee6be4854ef295ad351cb2413fb080c891e97adf4a0dca463c7ae",
+      "size": 470200
+    },
+    "98260-61821-brm/ksu-template-61821-fina.ko": {
+      "canonical": "ksu-template-61821-fina.ko",
+      "sha256": "36ecdb726735d56e96519b31d75c53ebd81a6d2ab46a4132da0d1415cc7e186f",
+      "size": 533008
+    },
+    "98260-61821-brm/ksu-template-61821-next.ko": {
+      "canonical": "ksu-template-61821-next.ko",
+      "sha256": "71931508be33ae4a0c24e5d727299835bea5add595020adf8e19b87fd223f593",
+      "size": 473552
+    },
+    "98260-61821-brm/ksu-template-61821-sukisu.ko": {
+      "canonical": "ksu-template-61821-sukisu.ko",
+      "sha256": "df3b52b27a46ce6fd9f555f5cdd9b2ca02b58c9eb0e05f47bcc2ddec5246b759",
+      "size": 612448
+    },
+    "98260-61821-brm/ksu-template.ko": {
+      "canonical": "98260-61821-brm/ksu-template-61821-kernelsu.ko",
+      "sha256": "97022c36f9888469146b71a5917bc0fe95c28f2c4816ce8c601e3fe5a2fcdae0",
+      "size": 438096
+    },
+    "98260-61821/ksu-template-61821-bakasu.ko": {
+      "canonical": "ksu-template-61821-bakasu.ko",
+      "sha256": "d28d3ecf800ee6be4854ef295ad351cb2413fb080c891e97adf4a0dca463c7ae",
+      "size": 470200
+    },
+    "98260-61821/ksu-template-61821-fina.ko": {
+      "canonical": "ksu-template-61821-fina.ko",
+      "sha256": "36ecdb726735d56e96519b31d75c53ebd81a6d2ab46a4132da0d1415cc7e186f",
+      "size": 533008
+    },
+    "98260-61821/ksu-template-61821-next.ko": {
+      "canonical": "ksu-template-61821-next.ko",
+      "sha256": "71931508be33ae4a0c24e5d727299835bea5add595020adf8e19b87fd223f593",
+      "size": 473552
+    },
+    "98260-61821/ksu-template-61821-sukisu.ko": {
+      "canonical": "ksu-template-61821-sukisu.ko",
+      "sha256": "df3b52b27a46ce6fd9f555f5cdd9b2ca02b58c9eb0e05f47bcc2ddec5246b759",
+      "size": 612448
+    },
+    "98260-61821/ksu-template.ko": {
+      "canonical": "64560-61821/ksu-template.ko",
+      "sha256": "86ed32a0946490736850d0c5d7a703c6e5bfde541e82864ed892b31e2b590563",
+      "size": 492728
+    },
+    "98260-6658/pc98260-su": {
+      "canonical": "pc98260-su",
+      "sha256": "8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1",
+      "size": 418016
+    },
+    "98260-6689/pc98260-su": {
+      "canonical": "pc98260-su",
+      "sha256": "8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1",
+      "size": 418016
+    },
+    "98260-aph112/exploit-android-key-ptr": {
+      "canonical": "98260-61258b/exploit-android-key-ptr",
+      "sha256": "5c76d21c012c000241c4716563da13b323a015d5b0f93902f717eba42b7ac10b",
+      "size": 98296
+    },
+    "98260-f171/syms_66118_kernelsu.txt": {
+      "canonical": "98260-f171/syms_66118.txt",
+      "sha256": "5defc8b2bbfcec3fee0809d509cee4ecafcf588f6c66a5848f24bb0181fe9d2e",
+      "size": 9452
+    },
+    "98260-g142/pc98260-su": {
+      "canonical": "pc98260-su",
+      "sha256": "8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1",
+      "size": 418016
+    },
+    "98260-g264/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g2e1f/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g3306/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g40b1/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g54d/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g554/syms_66118_kernelsu.txt": {
+      "canonical": "98260-g554/syms_66118.txt",
+      "sha256": "2aba252bd70367af3ac51ed322af2611e00b71baf8c53cb3f999b461bd1b7e39",
+      "size": 9452
+    },
+    "98260-g5859/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g77f/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g84/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g893/pc98260-su": {
+      "canonical": "pc98260-su",
+      "sha256": "8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1",
+      "size": 418016
+    },
+    "98260-g8a496/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-g8d6/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-ga812/pc98260-su": {
+      "canonical": "pc98260-su",
+      "sha256": "8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1",
+      "size": 418016
+    },
+    "98260-gaaa/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-gce849/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-ge9da/pc98260-su": {
+      "canonical": "98260-6157/pc98260-su",
+      "sha256": "9b38728e3a63c1d7ab023b4d65f0a524a6069b8655b4782c096c0c0922ea61c5",
+      "size": 2139760
+    },
+    "98260-h1c/addrcalc": {
+      "canonical": "addrcalc",
+      "sha256": "56110bc5727fcb13ab824eecc33c1d1d5d7e4e63ff3b58b72ad461f01b8b3a06",
+      "size": 25000
+    },
+    "98260-h1c/ksu-template-115.ko": {
+      "canonical": "98260-61821-brm/ksu-template-61821-kernelsu.ko",
+      "sha256": "97022c36f9888469146b71a5917bc0fe95c28f2c4816ce8c601e3fe5a2fcdae0",
+      "size": 438096
+    },
+    "ksu6157-g264/ksud": {
+      "canonical": "61157/ksud",
+      "sha256": "4f7d5fd65631915ea579ff406bd9cbe58217f2c91dac6527f5b2f28ad4508171",
+      "size": 4990848
+    },
+    "ksu6157/kernelsu-honor.ko": {
+      "canonical": "61157/kernelsu-honor.ko",
+      "sha256": "ccd025010fe49b5119c619a7ffa9505e8ed2b755ba94c3a2fbc08ef299f54142",
+      "size": 5517008
+    },
+    "ksu6157/ksud": {
+      "canonical": "61157/ksud",
+      "sha256": "4f7d5fd65631915ea579ff406bd9cbe58217f2c91dac6527f5b2f28ad4508171",
+      "size": 4990848
+    },
+    "su-g264/su_overlay_helper": {
+      "canonical": "ksu6157-m6/su_overlay_helper",
+      "sha256": "6a4b71c25220d24047250c36f05f8d5f0bf6ed5a5504c21525d5866f3dab8c78",
+      "size": 26400
+    }
+  },
+  "schema_version": 1
+}

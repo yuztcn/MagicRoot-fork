@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "description": "Single source of truth for MagicRoot kernel profile routing across Java staging and device-side shell dispatch.",
+  "profiles_61x": [
+    {
+      "id": "g7d",
+      "release_prefix": "6.1.157-android14-11-g7d3922fade43",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-6157",
+      "cga_base": null,
+      "handoff": "m6"
+    },
+    {
+      "id": "g264",
+      "release_prefix": "6.1.157-android14-11-g2646292297b1",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g264",
+      "cga_base": "g264/ksm-g264-base.ko",
+      "handoff": "cga+legacy"
+    },
+    {
+      "id": "gaaa",
+      "release_prefix": "6.1.157-android14-11-gaaa383620ebf",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-gaaa",
+      "cga_base": "g264/ksm-gaaa-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g3306",
+      "release_prefix": "6.1.157-android14-11-g3306a328b7be",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g3306",
+      "cga_base": "g264/ksm-g3306-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g84",
+      "release_prefix": "6.1.157-android14-11-g84ffa64b710b",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g84",
+      "cga_base": "g264/ksm-g84-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g77f",
+      "release_prefix": "6.1.157-android14-11-g77f76e323a02",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g77f",
+      "cga_base": "g264/ksm-g77f-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g8d6",
+      "release_prefix": "6.1.157-android14-11-g8d63307071ad",
+      "series": "6.1.157",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g8d6",
+      "cga_base": "g264/ksm-g8d6-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "gce849",
+      "release_prefix": "6.1.99-android14-11-gce84935796c9",
+      "series": "6.1.99",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-gce849",
+      "cga_base": "g264/ksm-gce849-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g5859",
+      "release_prefix": "6.1.99-android14-11-g5859fbdbad8c",
+      "series": "6.1.99",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g5859",
+      "cga_base": "g264/ksm-g5859-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g54d",
+      "release_prefix": "6.1.99-android14-11-g54d40b4fb287",
+      "series": "6.1.99",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g54d",
+      "cga_base": "g264/ksm-g54d-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g40b1",
+      "release_prefix": "6.1.128-android14-11-g40b1fd119d9b",
+      "series": "6.1.128",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g40b1",
+      "cga_base": "g264/ksm-g40b1-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g8a496",
+      "release_prefix": "6.1.128-android14-11-g8a4968670f1c",
+      "series": "6.1.128",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g8a496",
+      "cga_base": "g264/ksm-g8a496-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g2e1f",
+      "release_prefix": "6.1.128-android14-11-g2e1f0741dafb",
+      "series": "6.1.128",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-g2e1f",
+      "cga_base": "g264/ksm-g2e1f-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "ge9da",
+      "release_prefix": "6.1.99-android14-11-ge9da27488f45",
+      "series": "6.1.99",
+      "runner": "98260/run6157_full.sh",
+      "payload_dir": "98260-ge9da",
+      "cga_base": "g264/ksm-ge9da-base.ko",
+      "handoff": "cga"
+    },
+    {
+      "id": "g19a",
+      "release_prefix": "6.1.157-android14-11-g19a495a97bff",
+      "series": "6.1.157",
+      "runner": "61157/run61157.sh",
+      "payload_dir": "61157",
+      "cga_base": null,
+      "handoff": "legacy_61157"
+    }
+  ],
+  "profiles_98260": [
+    {
+      "id": "61258",
+      "dir": "98260",
+      "release_prefix": "6.12.58-android16-6-g3a7ac1674240",
+      "model_filter": null
+    },
+    {
+      "id": "61258b",
+      "dir": "98260-61258b",
+      "release_prefix": "6.12.58-android16-6-g459a4285ccf8",
+      "model_filter": "!APH-*"
+    },
+    {
+      "id": "aph112",
+      "dir": "98260-aph112",
+      "release_prefix": "6.12.58-android16-6-g459a4285ccf8",
+      "model_filter": "APH-*"
+    },
+    {
+      "id": "61258c",
+      "dir": "98260-61258c",
+      "release_prefix": "6.12.58-android16-6-g42fcf008ff5c",
+      "model_filter": null
+    },
+    {
+      "id": "6138",
+      "dir": "98260-6138",
+      "release_prefix": "6.12.38-android16-5-gfde",
+      "model_filter": null
+    },
+    {
+      "id": "6138y",
+      "dir": "98260-6138y",
+      "release_prefix": "6.12.38-android16-5-g7ae",
+      "model_filter": null
+    },
+    {
+      "id": "g4b36",
+      "dir": "98260-g4b36",
+      "release_prefix": "6.12.38-android16-5-g4b3671e1f5b7",
+      "model_filter": null
+    },
+    {
+      "id": "6123",
+      "dir": "98260-6123",
+      "release_prefix": "6.12.23-android16-5-g45",
+      "model_filter": null
+    },
+    {
+      "id": "g856",
+      "dir": "98260-g856",
+      "release_prefix": "6.12.23-android16-5-gcd85666d7884",
+      "model_filter": null
+    },
+    {
+      "id": "6658",
+      "dir": "98260-6658",
+      "release_prefix": "6.6.58-android15-8-g6484937db664",
+      "model_filter": null
+    },
+    {
+      "id": "g554",
+      "dir": "98260-g554",
+      "release_prefix": "6.6.118-android15-8-g554929766a0d",
+      "model_filter": null
+    },
+    {
+      "id": "f171",
+      "dir": "98260-f171",
+      "release_prefix": "6.6.118-android15-8-gf17133276a57",
+      "model_filter": null
+    },
+    {
+      "id": "6689",
+      "dir": "98260-6689",
+      "release_prefix": "6.6.89-android15-8-g082e5a98dac1",
+      "model_filter": null
+    },
+    {
+      "id": "61821",
+      "dir": "98260-61821",
+      "release_prefix": "6.18.21-android17-5-g928d1bb4f1d7",
+      "model_filter": null
+    },
+    {
+      "id": "61821brm",
+      "dir": "98260-61821-brm",
+      "release_prefix": "6.18.21-android17-5-ge186062ea75f",
+      "model_filter": null
+    },
+    {
+      "id": "g142",
+      "dir": "98260-g142",
+      "release_prefix": "6.12.58-android16-6-g142ddad31e60",
+      "model_filter": null
+    },
+    {
+      "id": "ga812",
+      "dir": "98260-ga812",
+      "release_prefix": "6.6.118-android15-8-ga812a1946391",
+      "model_filter": null
+    },
+    {
+      "id": "g893",
+      "dir": "98260-g893",
+      "release_prefix": "6.6.118-android15-8-g893e848657cc",
+      "model_filter": null
+    },
+    {
+      "id": "61821h1c117",
+      "dir": "98260-61821-117",
+      "release_prefix": "6.18.21-android17-5-gfee2325de189",
+      "model_filter": null
+    },
+    {
+      "id": "61821h1c",
+      "dir": "98260-h1c",
+      "release_prefix": "6.18.21-android17-5-",
+      "model_filter": null
+    },
+    {
+      "id": "g52d15",
+      "dir": "98260-g52d15",
+      "release_prefix": "6.12.81-android16-6-g52d15df5db87",
+      "model_filter": null
+    }
+  ]
+}

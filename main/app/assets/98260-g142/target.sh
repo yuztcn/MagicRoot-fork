@@ -1,0 +1,5 @@
+# CVE-2026-98260 target metadata (6.12.58 g142ddad31e60, static profile)
+CHAIN_98260_KERNEL="6.12.58-android16-6-g142ddad31e60-abogki576095858-4k"
+CHAIN_98260_MODELS=""
+CHAIN_98260_ROOT_SOCK="/data/local/tmp/pc98260-root.sock"
+CHAIN_98260_EXPECTED_MEMSTART_PFN="0x80000"

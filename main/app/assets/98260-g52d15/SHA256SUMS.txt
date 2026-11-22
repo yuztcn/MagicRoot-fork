@@ -1,0 +1,2 @@
+f69df321ecde8504da9fc0710ddfe79ce8f00512548e77e774fb3c01ac48096f  exploit-android-key-ptr
+33d790b421fe432b78464e6c8b34ddb732c9e1edbce6b480af7ed8b45033a4fa  target.sh

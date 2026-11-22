@@ -1,0 +1,334 @@
+MagicRoot 1.0.6 source manifest
+================================
+
+Release version: 1.0.6 (versionCode 13)
+Build date: 2026-11-21
+
+1.0.6 delta
+-----------
+New kernels: 6.12.38 g4b3671e1f5b7, 6.12.81 g52d15df5db87,
+  6.6.118 g893e848657cc, 6.1.157 g8d63307071ad (static adaptation).
+New manager flavors: nova (com.sukisu.nova), maplesu (dev.maplesu.manager).
+98260 payload rebuilt with multi-sample KASLR slide convergence checks.
+Manager LKM extraction adds `ksud debug extract-binary` for FinaSU/Nova/MapleSU.
+STP parallel-space fix (`StpClearStatus`) included.
+Removed dev/audit assets: binary-sources/66118/ksu/*, analysis-20261107,
+  1.0.4 audit/UI evidence and old release drafts. Runtime assets unchanged.
+
+Reference commits
+-----------------
+Yunnijian/OnePlus16-Jailbreak:
+  4c37cbd795a09393b62dcd4b771ed73c917f5519 (MIT)
+EAEdward/xiaomi9pmroot:
+  b2dbd18d4327849b6d90b98d0eb95bef46406da1 (MIT; 98260 plant/rootd/su base)
+superboyyy/HOneClick:
+  8acea35e7753d75137b45e57e7bf9c7b793b47a8 (2.0 Beta 6; 117 profile reference)
+Yunnijian/Shark:
+  8c704a449fc1a41a12dcdddc6b9b51b85f920a52 + cee30d61f548604992a709e0861f527d39c24852
+  (GPL-3.0; mechanism/path research only, no source copied)
+xingranya/onekeyjb:
+  8657b40 (GPL-3.0 + TERMS.md; mechanism research only, no source copied)
+woshigenm/CVE-2026-98937:
+  93ea96ba6edfe0eee05efb31b1c507474ec7ea94 (MIT; optional KASLR slide oracle PoC)
+
+98260 actual binary reproducibility
+-----------------------------------
+The released 98260 binary is the MagicRoot 6.12 port in
+binary-sources/98260-6.12/, derived mainly from xiaomi9pmroot's
+plant/rootd/su (MIT) with per-build changes.  It is not the early
+reference binary; that binary (not redistributed) lacks the
+`--no-real-cred` option used by run98260.sh.
+
+Toolchain: Android NDK r28c, Pkg.Revision 28.2.13676358
+Compiler: aarch64-linux-android35-clang
+Flags: -std=gnu11 -O2 -w -pthread -static
+
+Expected SHA256 (pre-ledger, retained for provenance only — see
+BINARY-SOURCES.md 2026-11-07 tail-scan section for current shipped hashes):
+fe67a61d09393a7bdb3c0927a87947e66da166a6f38664ef1c5381ac76f28f73  exploit-android-key-ptr (6.12.58)
+99fe9581a79fb2a5df80bf43c18a4e72025954c4cd63c854fc985369dcaba6bb  exploit-android-key-ptr (6.12.38)
+696240ec583616d3677e693d1e5d3783b7f590b682ace8d7ca830bc757516ca5  pc98260-su
+
+The byte-identical reference copy under cve-98260-repo/ was removed on
+2026-11-12.  It was kept only for comparison and is not part of the released
+source; no code or notice from it is redistributed here.
+
+License map
+-----------
+Project: LICENSE (AGPL-3.0 since 1.0.6; 1.0.5 and earlier MIT)
+Third-party notices: THIRD_PARTY_NOTICES.md
+Full texts: LICENSES/
+
+6.1.x audit (2026-11-03)
+------------------------
+All supported 6.1.x builds dispatch to 98260/run6157_full.sh and use the
+per-build CGA module under main/app/assets/g264/ksm-*-base.ko:
+  6.1.157 g7d3922fade43, g2646292297b1, g3306a328b7be, g84ffa64b710b,
+          g77f76e323a02, g8d63307071ad
+  6.1.99  gce84935796c9, g5859fbdbad8c, g54d40b4fb287, ge9da27488f45
+  6.1.128 g40b1fd119d9b
+See docs/6157-SUPPORT-AUDIT.md and BINARY-SOURCES.md for provenance/hashes.
+6.6.89 g082e5a98dac1 is supported statically through main/app/assets/98260-6689
+and binary-sources/6689; see docs/6.6.89-ADAPT.md.
+6.6.118 g893e848657cc is supported statically through main/app/assets/98260-g893;
+see docs/6.6.118-G893-ADAPT.md.
+6.1.157 g8d63307071ad is supported statically through main/app/assets/98260-g8d6;
+see docs/6157-G8D6-ADAPT.md.
+g84 payload was re-audited against the attached g84 boot image on 2026-11-03
+and corrected to TASK_CRED=0x840 / KITIMER_SIZE=0x118; see
+docs/6.1.157-G84-BOOT-VERIFY.md.  g186 is unchanged.
+MagicPad3 43499/pd3x route is intentionally skipped.
+The CGA base and remapped modules are third-party-derived; they are
+provenance-locked, not claimed to be fully reproducible in-repo.
+The 6.1.x runner extracts both the manager LKM and ksud; the LKM is used only
+when its vermagic exactly matches the target, otherwise the per-build CGA
+module is used.  The bundled ksu6157-g264 ksud is only a fallback.
+
+6.1.x successful-chain rebase (2026-11-04)
+------------------------------------------
+Input APK:
+  MagicRoot-98260-1.0.36-6157.apk.1
+  cce10cb3ca64c4152f9c73c9b60f6a27bd9053dd3a919a708c7eb13de831bb0d
+
+The proven g264 static blind payload is restored:
+  cc0b9693dcdba564585c39dfe3eb386860f1cede4251d0d7aca63d1e51762843
+
+The prior 34 KiB dynamic payload did not contain blind_reclaim_stream and is
+retired.  The other eight payloads are deterministically rebased from the
+proven static binary by:
+  binary-sources/61157-g264/rebase_success_payload.py
+  binary-sources/61157-g264/success-profiles.json
+
+All resulting hashes and the exact patch map are in
+docs/6157-SUCCESS-CHAIN-REBASE.md.  gce849/g40b1 are corrected to the audited
+0x840/0x118 BTF family.
+
+The g7d-only M6 handoff is restored:
+  main/app/assets/ksu6157-m6/ (19 files, 29 MB)
+  hashes: binary-sources/61157-g264/m6-provenance.json
+  source archive sha256:
+  6f0fd7cf03bfbc52bc3cfa0c1c964f9445a75221d62b4792210ac15d45320d21
+
+g7d uses M6; g264 keeps the g264 CGA/ksu6157-g264 inputs; every other 6.1.x
+build must use its own ksm-<build>-base.ko.  Cross-kernel ksu_prepare and
+6.12/6.6 template fallback are blocked.  No 43499/Pad3 asset was imported.
+
+6.1.128 g8a496 / g2e1f static adaptation (2026-11-04)
+-----------------------------------------------------
+Two more exact 6.1.128 builds are supported:
+
+  6.1.128 g8a4968670f1c  payload 1db586a3f787a35d7f8872537470783397f2fbd9680a9877dd26beb2ca410f35
+  CGA                    g264/ksm-g8a496-base.ko
+                         450b242ba93e085de4545184882230980addefb336bd6922885b285863c19dfa
+  6.1.128 g2e1f0741dafb  payload e681569bcf6b51fa36e59622e6361b19653eeca2079c8b081f0b9a9ae2d47d27
+  CGA                    g264/ksm-g2e1f-base.ko
+                         5b8f95453fa73e3c23aa0ffd071a2f354eb089358f4e13c2461fc87524075549
+
+Both use task_cred=0x838, real_cred=0x830 and k_itimer=0x108.  Payloads are
+derived by binary-sources/61157-g264/rebase_success_payload.py; CGA modules by
+binary-sources/61157-g264/rebase_cga_module.py and cga-profiles.json.  The
+latter maps 225 absolute symbols and 220 live jump stubs by name and rejects
+unknown mappings or unexplained bytes.  External boot/vmlinux inputs are not
+shipped.  Both builds are static adaptations with no device validation; see
+docs/61128-OLD-KERNELS-ADAPT.md.
+
+6.1.157 gaaa static adaptation (2026-11-07)
+------------------------------------------
+Exact release: 6.1.157-android14-11-gaaa383620ebf
+Input boot SHA-256: a41aa37fc83e39334a1805bcd3f510c860d76e6dd02e44db762012f6caf9e524
+
+  payload 98260-gaaa/exploit-android-key-ptr
+          67cedbc21f3bd6c761291183dac054c5711407485fbff8c24a7d577409ee1fae
+  CGA     g264/ksm-gaaa-base.ko
+          64ebb525f3f98c73a0cc648f27552b0e5792ee18aaf87c6b1fdade15a90bc377
+
+The 0x838/0x830/0x108 layout and call-site anchors were recovered from the
+supplied boot.  The payload is recorded in success-profiles.json.  The restored
+CGA uses cga-feature-restore.json with 226 symbols and 221 live stubs; the old
+225/220 manifest remains only for legacy profiles.  No 43499/Pad3 route was imported.
+Static adaptation only; no matching-device root/KSU validation.  Full report:
+docs/61157-GAAA-ADAPT.md.
+
+6.1.x unified runtime assets (2026-11-07)
+----------------------------------------
+No ek-root native payload, KO or rootd was imported.  Existing payload/CGA
+bytes are unchanged; deployment planning and runner path selection were unified.
+
+  M6 script  ksu6157-m6/post_root.sh
+             f3c48e4f0561098a84f4816b63ba88309b8dacf03427bb56c47295f4a146b1d0
+             Local change: retain snapshots, remove unused FIFO eval service.
+  Manifest   6157-integrity.tsv
+             716bff07d37682e24f34e0422702c67debbe068dbb2fda811a6c6959087f8bc9
+             Generated deterministically by tools/gen_6157_integrity.py.
+
+The M6 source hashes and local change are also recorded in m6-provenance.json.
+No 6.1.x device rerun was performed for these script/state-machine changes.
+
+g142 dual-chain adaptation (2026-11-08)
+---------------------------------------
+Exact release: 6.12.58-android16-6-g142ddad31e60-abogki576095858-4k
+Reference: honor_ubl 3.1.1 aph136g142, MIT (LICENSES/Honor-UBL-Adaptation-MIT.txt)
+Reference boot SHA-256:
+  697a6356f2157665fff4926f5f4efbac08c3efcd0d20a8b08c8609ac084c5051
+Reference kernel Image SHA-256:
+  f445f7756756ad5c8a58b63c48b12efd69f2e829903e3f009ad2ad6bdfb17c56
+
+64560 KASLR helper:
+  main/app/assets/kaslr_slide_aph136g142
+  925ecd35fda6ba70a6dafa137ae2bffcfe009f164376e2cc98888a0edf1bb5d6
+Source:
+  binary-sources/64560/kaslr_slide_aph136g142.c
+  ab7a3ff6b0382017e4a3296fe402132b2dae9132f04381346ff3239ebea340ef
+
+98260 payload (current lifecycle/trace-fixed dynamic PIE, unchanged after
+correcting currently unused LINK_ALLOC_TASK/BNE_LINK metadata):
+  main/app/assets/98260-g142/exploit-android-key-ptr
+  e5d4a5095bb59964a7edfd0e37aa813f341fdbf62f59c9aa0ea96c821e28141a
+Rootd client:
+  main/app/assets/98260-g142/pc98260-su
+  8838ab17e38252492df3761b74126855bde8a77ed5ab02255b67ebef81376ab1
+
+All 9 adapted 6.12 payloads rebuilt byte-identically from current sources;
+45 profile/flavor static ko_patch combinations report MISSING=0. This is
+static validation only, not a g142 on-device root/KSU result. Full report:
+docs/APH136G142-ADAPT.md.
+
+6.12 / g142 four optimizations (2026-11-08)
+-------------------------------------------
+Report: docs/612-G142-OPTIMIZATION.md
+
+1. 6.12 staging now excludes and prunes 113 6.1-only files (150,983,149 B).
+   Typical 61258 98260 deployment falls from 189 to 76 files, about
+   159.25 MiB to 15.26 MiB. APK support for other kernels is unchanged.
+2. Read-only preflight returns 0=ok, 2=blocked, 3=inconclusive. Three shared
+   native sources have SHA-256
+   1657761c1f57cdc4940ca3b165770ebdefa3dfb9aaca8563668065f7cdc84c64.
+   All 12 payloads were rebuilt as 76,160 B dynamic PIE; current hashes are
+   listed in BINARY-SOURCES.md and the optimization report.
+3. g142/ga812 pc98260-su use the existing top-level canonical dedup entry;
+   aph112's payload dedup hash was updated to the new shared 61258b build.
+4. g142 KASLR helper is rebuilt from unchanged source as a 10,704 B dynamic
+   bionic PIE:
+   50af62de1e9aa6768efd3f3f0fcd520b888fdf08aac756d819e22cc5e4cb0adb
+   tools/test_kaslr_g142.py locks valid and no-anchor synthetic captures.
+   Original static ET_EXEC could not run in the development environment;
+   no direct static-binary comparison or real g142 trace capture is claimed.
+
+Final APK: main/app/MagicRoot.apk
+Size: 61,529,131 B
+SHA-256: e8ee127ccd18d64673083bfd6505dd87abc63b806d1a7d899b40edb613447343
+No APK installation, UAF/rootd/LKM run, hotfix or reboot was performed.
+
+Soft-reboot repair lspd startup fix (2026-11-08)
+------------------------------------------------
+Report: docs/LSPOSED-7938-ANALYSIS.md
+
+lsposed-hotfix.sh v11 replaces the fixed three-second lspd name check with a
+20-second bounded poll and retains launcher diagnostics.  The regression test
+executes the real shell helpers with a four-second delayed app_process ->
+lspd transition.  28 lifecycle tests pass; Android root-shell helper validation
+passes against the live daemon.
+
+The instrumented repair completed a real zygote/system_server restart.  The
+resulting lspd/zygote/system_server PIDs were 24354/24446/24785 and LSPosed
+7939 reported System server: connected with 4 installed modules and 3 enabled
+user states.  The final v11 script was not used for a second zygote restart.
+
+Final APK: main/app/MagicRoot.apk
+Size: 61,529,150 B
+SHA-256: f346deec5f3b3cb1d34d36d1a87e9a27ad4d8b3320beaeb42021acdf670578f7
+V3 signer certificate SHA-256 remains
+ef572a91ebf470dc6606af3639e8aa8d28b4bd0768d31b5efbbb2933d92c8296.
+
+SELinux rule auto-restoration removal (2026-11-08)
+-------------------------------------------------
+The bundled zygisknext-sepolicy-1.5.3.rule asset, its ASSETS registration,
+App cache/staging/wrapper plumbing and the hotfix copy/restore branch are
+removed.  lsposed-hotfix.sh v12 uses only the installed module's own existing
+sepolicy.rule; when absent it logs reason=module_rule_required and refuses to
+start zygiskd or re-enable the incomplete module.
+
+Current hotfix SHA-256:
+9393085faf7a3ddbccfe33d10b8e9964f94d1ac4d99b2af03a0cc097a893564b
+
+28 lifecycle tests pass, including a negative contract that rejects reintroducing
+the rule asset or restoration plumbing.  No new device-side hotfix/zygote run is
+claimed for v12.
+
+Final APK after SELinux auto-restoration removal: main/app/MagicRoot.apk
+Size: 61,500,187 B
+SHA-256: fdacd31bc24c8f49b5761f774889be319e503afc4ad91097abdd5227e9c515f3
+All checks pass with 327 registered/on-disk/APK-verified assets; the removed rule
+is absent from the signed APK.  V3 signer certificate is unchanged.
+
+6.1 CGA feature restoration (2026-11-11)
+----------------------------------------
+Report: docs/6157-CGA-FEATURE-RESTORE.md
+
+g264 and gaaa now use a source-restored CGA module with su_compat, kernel_umount
+and selinux_hide.  Dispatcher writes are verified by readback; partial hook
+registration is rolled back instead of redirecting syscalls through a broken
+dispatcher.  g19a and all profiles without complete new symbol maps are unchanged.
+
+  g264/ksm-g264-base.ko
+    b44cc79de9196c65a0f2ffe1a6e5b23dff7713c68f8752c3fe861c627d78399a
+  g264/ksm-gaaa-base.ko
+    64ebb525f3f98c73a0cc648f27552b0e5792ee18aaf87c6b1fdade15a90bc377
+
+Both are 422384 B with 226 absolute symbols and 221 live stubs.  The checked-in
+build-feature-restore.sh reproduced identical outputs in a fresh directory.
+The original 225/220 base is retained only under binary-sources/61157-g264/
+legacy-cga for old-profile verification and is not an APK asset.  No device-side
+insmod or feature validation has been performed.
+
+Late-load init_cred integration (2026-11-11)
+--------------------------------------------
+Report: docs/INIT-CRED-LATELOAD.md
+
+ko_patch now rewrites track_throne/do_track_throne to use init_cred.  Fake and
+primary late-load first insmod the patched module, then run userspace late-load;
+primary no longer silently loads the manager's original embedded module.  Real
+direct-finit, staged late-load, H1C and insmod fallback consume the same patch.
+Strict already checks prevent false positives and duplicate init_cred symbols.
+
+Current ko_patch SHA-256:
+fe3f983200083767baa822d76d46d32f6aa42bb3e4419762306b894b1f6dc10c
+
+Runtime symbol completion (2026-11-11)
+--------------------------------------
+Report: docs/RUNTIME-SYM-COMPLETION.md
+
+Official KernelSU 32727 changed its embedded LKM to reference 11 new symbols.
+ko_patch now prints MISSING_SYM and accepts an optional /proc/kallsyms dump for
+exact-name completion; runtime addresses are used as-is and zero/hidden values
+are refused.  tools/test_runtime_syms.py covers the resolver, zero-address
+refusal and the shell retry/fail-closed contract.
+
+A real device run proved the runtime path cannot bootstrap itself in real-cred:
+kptr_restrict=2 hides addresses from uid 2000, and rootd only starts after
+finit_module, which waits for the ready file the retry is trying to produce.
+The primary fix is static: tools/sync_manager_symbols.py appends the 11 symbols
+to 14 kernelsu tables only when every overlapping symbol matches a donor table
+(219/226 names).  The carved 6.12.76, 6.6.127 and 6.18.32 manager variants all
+report 236/236 resolved (16/16 profiles); ten profiles were additionally
+verified against exact kernel dumps with zero mismatches.  The runner's rootd
+wait now defaults to 6 seconds and is only a fallback when rootd already exists.
+Four profiles (61258b, aph112, 6123, 6138y) have no local exact image and are
+covered by donor-overlap evidence only.
+
+Static tests cover five flavors, 6.6/6.18, Fina's wrapper, idempotency and late-load
+RC.  Fake and primary save the real late-load RC before writing logs and require zero
+for primary success as well.  Exact boot images supplied missing init_cred values for
+g856, 61258c, 6689, f171, g554, ga812 and g264.  A supplemental exact 6658 boot
+(SHA-256 bf22d44ba14dd87327ea7b5dc8bb28fd71b1ae4b71c39e1f10a204c62039e278)
+exported 109221 kallsyms and proved init_cred=0xffffffc082170748.  All five 6658
+Flavor tables had zero mismatches across every overlapping symbol before the single
+entry was added.  The previously listed unavailable profiles are now covered; unknown
+future profiles remain fail-closed.  No new device-side UAF was executed.
+
+Final APK: main/app/MagicRoot.apk
+Size: 61,217,777 B
+SHA-256: eeee111c248648e3070a1b7a6adcb602a1dc88285237cb30b51ff7125283b00e
+V3 signer certificate SHA-256:
+ef572a91ebf470dc6606af3639e8aa8d28b4bd0768d31b5efbbb2933d92c8296
+The packaged runners, ko_patch and 98260 asset manifest match the working tree.
