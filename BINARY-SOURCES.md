@@ -828,6 +828,10 @@ The archive is stored as `-text` in `.gitattributes` to keep byte-locked helper
 and symbol files unchanged.  The OS9/KSU331 modules carry g7d vermagic.  No
 43499/Pad3 asset from either supplied file was imported.
 
+The M6 suite is a first-party local handoff package (own artifact), not a
+third-party component; it is intentionally not registered in the third-party
+license inventory.
+
 See `docs/6157-SUCCESS-CHAIN-REBASE.md` for the full static proof, runner
 fixes and unverified boundaries.
 
