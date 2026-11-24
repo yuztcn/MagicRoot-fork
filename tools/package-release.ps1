@@ -22,7 +22,7 @@ foreach ($tree in @("binary-sources")) {
     $p = Join-Path $project $tree
     if (Test-Path $p) { $files += Get-ChildItem $p -Recurse -File }
 }
-foreach ($name in @("LICENSE", "LICENSES", "THIRD_PARTY_NOTICES.md", "build-binaries.ps1",
+foreach ($name in @("LICENSE", "NOTICE.md", "LICENSES", "THIRD_PARTY_NOTICES.md", "build-binaries.ps1",
                     "BINARY-SOURCES.md", "README-1.0.6-release.md", "SOURCE-MANIFEST.txt",
                     "docs/ADAPT-ROOTD-STP-REPRO.md",
                     "docs/susfs-honor-adaptation-2026-10-29.md",

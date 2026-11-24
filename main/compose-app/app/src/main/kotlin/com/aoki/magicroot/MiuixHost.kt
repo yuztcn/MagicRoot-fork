@@ -4143,7 +4143,7 @@ private fun AboutPage(activity: MainActivity, state: UiState) {
                 listOf(
                     "YuKongA/CVE-2026-98260（MIT）、AzirX1337（MIT）、OnePlus16-Jailbreak（GPL-3.0；早期快照 MIT）、onekeyjb（GPL-3.0）、No-World/rootkit（MIT）、PMX110",
                     "LSPosed / Zygisk Next：不打包内置 APK 或模块，仅设备端脚本热修复",
-                    "完整许可证文本与文件级边界见源码包 LICENSE、THIRD_PARTY_NOTICES.md 与 LICENSES/",
+                    "完整许可证文本见源码包 LICENSE，版权声明与文件级边界见 NOTICE.md、THIRD_PARTY_NOTICES.md 与 LICENSES/",
                 ),
             )
             AboutSection(

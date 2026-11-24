@@ -37,4 +37,5 @@
 | upstream only | `YuKongA/CVE-2026-98260`（MIT）、`No-World/rootkit`（MIT）、LSPosed / Zygisk Next（仅设备端热修复，不随包分发） | 各自上游协议 |
 
 The full notice is in `../THIRD_PARTY_NOTICES.md`.
-The project's own license and boundary statement are in `../LICENSE`.
+The project's own license text is `../LICENSE`; the copyright notice and
+third-party boundary statement are in `../NOTICE.md`.

@@ -1,8 +1,8 @@
 # Third-party notices / 第三方组件与许可
 
 MagicRoot 1.0.6 及以后版本（应用 Java/Kotlin 代码、脚本与各内核 profile 适配修改）采用
-`LICENSE` 中的 GNU AGPL-3.0；该协议不改变、不覆盖下述任何第三方源码或随包预编译产物的原始许可证。
-1.0.5 及更早版本仍按 MIT 授权。完整许可证文本见 `LICENSES/`。
+`LICENSE` 中的 GNU AGPL-3.0（协议原文）；该协议不改变、不覆盖下述任何第三方源码或随包预编译产物的原始许可证。
+1.0.5 及更早版本仍按 MIT 授权。项目版权声明与适用范围见 `NOTICE.md`，完整许可证文本见 `LICENSES/`。
 
 AGPL-3.0 与 MIT / Apache-2.0 / GPL-3.0 兼容，但与 GPL-2.0-only 不兼容。随包的
 KernelSU / KernelSU-Next / BakaSU GPL-2.0 预编译 LKM 按独立作品分发，不在本项目的

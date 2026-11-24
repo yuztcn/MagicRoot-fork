@@ -110,12 +110,13 @@ bash tools/check.sh
 - 仅用于本人设备或明确授权设备；一次性临时 root，重启即失效；
 - 不修改分区、不做持久化、不制作永久 root；
 - 不安装 LSPosed 管理器 APK，LSPosed 修复只做设备端热修复；
-- 本项目自研部分自 1.0.6 起采用 **GNU AGPL-3.0**（见 `LICENSE`）；
-  1.0.5 及更早版本仍为 MIT。通过网络提供修改版服务时，AGPL 第 13 条要求
-  向使用者提供对应源码；
-- 第三方源码与随包预编译产物沿用各自协议，边界见 `THIRD_PARTY_NOTICES.md`
-  与 `LICENSES/`。AGPL-3.0 与 GPL-2.0-only 不兼容，随包 KernelSU 系 GPL-2.0
-  预编译 LKM 按独立作品处理，不在本项目重授权范围内。
+- 本项目自研部分自 1.0.6 起采用 **GNU AGPL-3.0**：`LICENSE` 是协议原文
+  （gnu.org 的 agpl-3.0.txt，未加改动），项目版权声明与适用范围说明见
+  `NOTICE.md`；1.0.5 及更早版本仍为 MIT。通过网络提供修改版服务时，
+  AGPL 第 13 条要求向使用者提供对应源码；
+- 第三方源码与随包预编译产物沿用各自协议，边界见 `NOTICE.md`、
+  `THIRD_PARTY_NOTICES.md` 与 `LICENSES/`。AGPL-3.0 与 GPL-2.0-only 不兼容，
+  随包 KernelSU 系 GPL-2.0 预编译 LKM 按独立作品处理，不在本项目重授权范围内。
 
 ## 致谢
 
