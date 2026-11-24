@@ -133,11 +133,12 @@ APK 的 SHA-256 以 GitHub Release 页面与同目录校验文件为准。
 
 ## 许可与致谢
 
-本项目自研部分自 1.0.6 起采用 **GNU AGPL-3.0**（`LICENSE`）；
-1.0.5 及更早版本仍为 MIT。通过网络提供修改版服务时，AGPL 第 13 条要求提供
-对应源码。第三方源码与随包预编译产物沿用各自协议，边界见
-`THIRD_PARTY_NOTICES.md` 与 `LICENSES/`；随包 KernelSU 系 GPL-2.0 预编译
-LKM 按独立作品处理，不在本项目重授权范围内。
+本项目自研部分自 1.0.6 起采用 **GNU AGPL-3.0**（`LICENSE` 为协议原文，
+版权声明与适用范围见 `NOTICE.md`）；1.0.5 及更早版本仍为 MIT。
+通过网络提供修改版服务时，AGPL 第 13 条要求提供对应源码。第三方源码与
+随包预编译产物沿用各自协议，边界见 `NOTICE.md`、`THIRD_PARTY_NOTICES.md`
+与 `LICENSES/`；随包 KernelSU 系 GPL-2.0 预编译 LKM 按独立作品处理，
+不在本项目重授权范围内。
 
 感谢酷安 @qiufeng1586、@熠寻 的无私分享，以及 xiaomi9pmroot、
 woshigenm/CVE-2026-98260、popsicle、HOneClick、KernelSU 系列管理器等

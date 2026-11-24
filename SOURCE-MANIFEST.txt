@@ -55,7 +55,8 @@ source; no code or notice from it is redistributed here.
 
 License map
 -----------
-Project: LICENSE (AGPL-3.0 since 1.0.6; 1.0.5 and earlier MIT)
+Project: LICENSE (verbatim AGPL-3.0 text; 1.0.6 and later; 1.0.5 and earlier MIT)
+Project notice / boundary statement: NOTICE.md
 Third-party notices: THIRD_PARTY_NOTICES.md
 Full texts: LICENSES/
 
